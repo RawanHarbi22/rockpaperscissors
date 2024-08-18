@@ -96,7 +96,19 @@
             transform: scale(1);
         }
 
+        img {
+            width: 200px;
+            padding: 50px;
+            margin: 0;
+            border: 5px solid white;
+            border-radius: 50%;
+        }
+
         @media (max-width: 582px) {
+
+            .rockpaper {
+                
+            }
             .rock {
                 padding: 4px 25px 30px;
             }
@@ -133,14 +145,34 @@
             .result {
                 margin: 40px;
             }
-        }
 
-        img {
-            width: 200px;
-            padding: 50px;
-            margin: 0;
-            border: 5px solid white;
-            border-radius: 50%;
+            img {
+                width: 100px;
+                padding: 30px;
+            }
+
+            .rockpaper {
+                gap: 0px;
+            
+                display: flex;
+                justify-content: flex-end;
+            }
+
+            p .imgrr {
+                position: absolute;
+                right:50px;
+            }
+            p .imgpp {
+                position: absolute;
+        /* right: 50px; */
+        left: 35px;
+        top: 35%;
+            }
+            p .imgss {
+                position: absolute;
+        right: 25%;
+        bottom: 30%;
+            }
         }
 
         p {
@@ -199,7 +231,7 @@
             document.querySelector('.res-wins').innerHTML = `Wins: ${scoreb.wins} | Losses: ${scoreb.losses} | Draws: ${scoreb.draws}`;
 
         }
-                "><img src="rock.png" alt=""></p>
+                "><img src="rock.png" alt="" class="imgrr"></p>
         
         
 
@@ -232,7 +264,7 @@
             document.querySelector('.res-wins').innerHTML = `Wins: ${scoreb.wins} | Losses: ${scoreb.losses} | Draws: ${scoreb.draws}`;
 
         }
-            "><img src="paper.png" alt=""></p>
+            "><img src="paper.png" alt="" class="imgpp"></p>
         
 
             <!--       scissors      -->
@@ -261,7 +293,7 @@
             scorebb();
             document.querySelector('.res-wins').innerHTML = `Wins: ${scoreb.wins} | Losses: ${scoreb.losses} | Draws: ${scoreb.draws}`;
         }
-            "><img src="scissors.png" alt=""></p>
+            "><img src="scissors.png" alt="" class="imgss"></p>
 
     </div>
 
