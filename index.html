@@ -1,13 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&family=Sono:wght@200..800&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
     <style>
-
         body {
+            font-family: 'Work', sans-serif;
             background-color: black;
+        }
+
+        *::selection {
+            background-color: rgb(60, 255, 0);
+            color: black;
         }
 
         .main {
@@ -19,7 +28,7 @@
         }
 
         .text-con {
-            color: white;
+            color: rgb(60, 255, 0);
             text-align: center;
         }
 
@@ -58,14 +67,25 @@
             padding: 20px 50px; */
         /* } */
 
-        p{
+        img,
+        p,
+        h2,
+        h1 {
+            text-shadow: 0px 0px 20px #33ff00;
+        }
+
+        img {
+            box-shadow: 0px 0px 20px #ffca28;
+        }
+
+        p {
             cursor: pointer;
             user-select: none;
             -webkit-user-select: none;
         }
 
         .res-text {
-            color: white;
+            color: rgb(60, 255, 0);
             margin-top: 10px;
             font-size: 70px;
             text-align: center;
@@ -74,7 +94,7 @@
         }
 
         .res-emoji {
-            color: white;
+            color: rgb(60, 255, 0);
             text-align: center;
             margin-top: 50px;
             font-size: 150px;
@@ -82,11 +102,22 @@
             transform: scale(1);
             transition: 0.3s;
         }
+
         .res-wins {
-            color: white;
+            color: rgb(60, 255, 0);
             text-align: center;
             margin-top: 50px;
             font-size: 50px;
+            margin-bottom: 50px;
+            transform: scale(1);
+            transition: 0.3s;
+        }
+
+        .res-turns {
+            color: rgb(60, 255, 0);
+            text-align: center;
+            margin-top: 50px;
+            font-size: 30px;
             margin-bottom: 50px;
             transform: scale(1);
             transition: 0.3s;
@@ -100,18 +131,25 @@
             width: 200px;
             padding: 50px;
             margin: 0;
-            border: 5px solid white;
+            border: 5px solid #ffca28;
             border-radius: 50%;
+            user-select: none;
+            
+            transition: .4s;
+
+        }
+
+        img:hover {
+            background-color: #ffe8a4;
+            filter: contrast(130%);
         }
 
         @media (max-width: 582px) {
 
-            .rockpaper {
-                
-            }
             .rock {
                 padding: 4px 25px 30px;
             }
+
             p {
                 font-size: 60px;
             }
@@ -129,18 +167,32 @@
             }
 
             .res-emoji {
-                font-size: 75px;
+                font-size: 45px;
                 margin-top: 5px;
                 margin-bottom: 20px;
             }
 
             .res-text {
-                font-size: 40px;
-            }   
+                font-size: 30px;
+            }
 
             .res-wins {
-                font-size: 30px;
-            }  
+                font-size: 20px;
+                
+            }
+
+            #res-wins span {
+                display: none;
+            }
+
+            .res-wins::after {
+                content: "";
+            }
+
+            .res-turns {
+                font-size: 10px;
+                
+            }
 
             .result {
                 margin: 40px;
@@ -153,48 +205,57 @@
 
             .rockpaper {
                 gap: 0px;
-            
-                display: flex;
-                justify-content: flex-end;
             }
 
-            p .imgrr {
-                position: absolute;
-                right:50px;
-            }
-            p .imgpp {
-                position: absolute;
-        /* right: 50px; */
-        left: 35px;
-        top: 35%;
-            }
-            p .imgss {
-                position: absolute;
-        right: 25%;
-        bottom: 30%;
-            }
         }
 
         p {
             margin: 0;
         }
-        
 
+        .res-emoji span {
+            text-shadow: #ffca28 0px 0px 20px;
+            
+        }
+
+        .reset {
+            color: rgb(60, 255, 0);
+            text-align: center;
+            background-color: rgb(0, 0, 0);
+            margin-top: 25px;
+            border: 3px solid rgb(60, 255, 0);
+            border-radius: 15px;
+            font-size: 30px;
+            width: 40%;
+            font-weight: bold;
+            padding: 15px 30px;
+            box-shadow: 0px 0px 20px #33ff00;
+            text-shadow: 0px 0px 20px #33ff00;
+            transition: 0.3s;
+        }
+
+        .reset:hover {
+            background-color: rgb(60, 255, 0);
+            color: rgb(0, 0, 0);
+            text-shadow: none;
+            filter: contrast(130%);
+        }
     </style>
 </head>
+
 <body>
-    
-<div class="main">
-    <div class="text-con">
-        <h1>Rock Paper Scissors</h1>
-        <h2>
-        Select One Below:
-    </h2>
-    </div>
 
-<!--                                    rock, paper, scissors                                   -->
+    <div class="main">
+        <div class="text-con">
+            <h1>Rock Paper Scissors</h1>
+            <h2>
+                Select One Below:
+            </h2>
+        </div>
 
-    <div class="rockpaper">
+        <!--                                    rock, paper, scissors                                   -->
+
+        <div class="rockpaper">
 
 
             <!--       rock      -->
@@ -204,36 +265,41 @@
         computerMove();
 
         
+        
                     
         if (computermm === 'Rock') {
 
             
-            document.querySelector('.res-emoji').innerHTML = 'I Chose 👊';
+            document.querySelector('.res-emoji').innerHTML = 'I Chose <span>👊</span>';
             document.querySelector('.res-text').innerHTML = 'its draw';
             scorebb();
             document.querySelector('.res-wins').innerHTML = `Wins: ${scoreb.wins} | Losses: ${scoreb.losses} | Draws: ${scoreb.draws}`;
+            
             
         }
         else if (computermm === 'Paper') {
 
             
-            document.querySelector('.res-emoji').innerHTML = 'I Chose ✋';
+            document.querySelector('.res-emoji').innerHTML = 'I Chose <span>✋</span>';
             document.querySelector('.res-text').innerHTML = 'You lost';
             scorebb();
             document.querySelector('.res-wins').innerHTML = `Wins: ${scoreb.wins} | Losses: ${scoreb.losses} | Draws: ${scoreb.draws}`;
+            document.querySelector('.res-turns').innerHTML = `Turns Played : ${scoreb.wins + scoreb.losses + scoreb.draws}`;
+            
         }
         else {
 
             
-            document.querySelector('.res-emoji').innerHTML = 'I Chose ✌️';
+            document.querySelector('.res-emoji').innerHTML = 'I Chose <span>✌️</span>';
             document.querySelector('.res-text').innerHTML = 'You won';
             scorebb();
             document.querySelector('.res-wins').innerHTML = `Wins: ${scoreb.wins} | Losses: ${scoreb.losses} | Draws: ${scoreb.draws}`;
+            document.querySelector('.res-turns').innerHTML = `Turns Played : ${scoreb.wins + scoreb.losses + scoreb.draws}`;
 
         }
                 "><img src="rock.png" alt="" class="imgrr"></p>
-        
-        
+
+
 
             <!--       paper      -->
             <p class="paper" onclick="
@@ -242,118 +308,151 @@
 
             if (computermm === 'Rock') {
 
-            document.querySelector('.res-emoji').innerHTML = 'I Chose 👊';
+            document.querySelector('.res-emoji').innerHTML = 'I Chose <span>👊</span>';
             document.querySelector('.res-text').innerHTML = 'You won';
             scorebb();
             document.querySelector('.res-wins').innerHTML = `Wins: ${scoreb.wins} | Losses: ${scoreb.losses} | Draws: ${scoreb.draws}`;
+            document.querySelector('.res-turns').innerHTML = `Turns Played : ${scoreb.wins + scoreb.losses + scoreb.draws}`;
 
         }
         else if (computermm === 'Paper') {
 
-            document.querySelector('.res-emoji').innerHTML = 'I Chose ✋';
+            document.querySelector('.res-emoji').innerHTML = 'I Chose <span>✋</span>';
             document.querySelector('.res-text').innerHTML = 'its draw';
             scorebb();
             document.querySelector('.res-wins').innerHTML = `Wins: ${scoreb.wins} | Losses: ${scoreb.losses} | Draws: ${scoreb.draws}`;
+            document.querySelector('.res-turns').innerHTML = `Turns Played : ${scoreb.wins + scoreb.losses + scoreb.draws}`;
 
         }
         else {
 
-            document.querySelector('.res-emoji').innerHTML = 'I Chose ✌️';
+            document.querySelector('.res-emoji').innerHTML = 'I Chose <span>✌️</span>';
             document.querySelector('.res-text').innerHTML = 'You lost';
             scorebb();
             document.querySelector('.res-wins').innerHTML = `Wins: ${scoreb.wins} | Losses: ${scoreb.losses} | Draws: ${scoreb.draws}`;
+            document.querySelector('.res-turns').innerHTML = `Turns Played : ${scoreb.wins + scoreb.losses + scoreb.draws}`;
 
         }
             "><img src="paper.png" alt="" class="imgpp"></p>
-        
+
 
             <!--       scissors      -->
             <p class="scissors" onclick="
+
 
         computerMove();
 
         if (computermm === 'Rock') {
 
-            document.querySelector('.res-emoji').innerHTML = 'I Chose 👊';
+            document.querySelector('.res-emoji').innerHTML = 'I Chose <span>👊</span>';
             document.querySelector('.res-text').innerHTML = 'You lost';
             scorebb();
             document.querySelector('.res-wins').innerHTML = `Wins: ${scoreb.wins} | Losses: ${scoreb.losses} | Draws: ${scoreb.draws}`;
+            document.querySelector('.res-turns').innerHTML = `Turns Played : ${scoreb.wins + scoreb.losses + scoreb.draws}`;
 
         }
         else if (computermm === 'Paper') {
-            document.querySelector('.res-emoji').innerHTML = 'I Chose ✋';
+            document.querySelector('.res-emoji').innerHTML = 'I Chose <span>✋</span>';
             document.querySelector('.res-text').innerHTML = 'You won';
             scorebb();
             document.querySelector('.res-wins').innerHTML = `Wins: ${scoreb.wins} | Losses: ${scoreb.losses} | Draws: ${scoreb.draws}`;
+            document.querySelector('.res-turns').innerHTML = `Turns Played : ${scoreb.wins + scoreb.losses + scoreb.draws}`;
 
         }
         else {
-            document.querySelector('.res-emoji').innerHTML = 'I Chose ✌️';
+            document.querySelector('.res-emoji').innerHTML = 'I Chose <span>✌️</span>';
             document.querySelector('.res-text').innerHTML = 'its draw';
             scorebb();
             document.querySelector('.res-wins').innerHTML = `Wins: ${scoreb.wins} | Losses: ${scoreb.losses} | Draws: ${scoreb.draws}`;
+            document.querySelector('.res-turns').innerHTML = `Turns Played : ${scoreb.wins + scoreb.losses + scoreb.draws}`;
         }
             "><img src="scissors.png" alt="" class="imgss"></p>
 
+
+            <!--       scissors      -->
+           
+
+        </div>
+
+        <button class="reset" onclick="
+
+            scoreb.wins = 0;
+            scoreb.losses = 0;
+            scoreb.draws = 0;
+            localStorage.removeItem('scorerawan');
+            document.querySelector('.res-wins').innerHTML = `<span>Wins: ${scoreb.wins} | Losses: ${scoreb.losses} | Draws: ${scoreb.draws}</span>`;
+            document.querySelector('.res-emoji').innerHTML = '';
+            document.querySelector('.res-text').innerHTML = '';
+            document.querySelector('.res-turns').innerHTML = `Turns Played : ${scoreb.wins + scoreb.losses + scoreb.draws}`;
+
+            ">Reset</button>
+
+        <!--                    result -->
+
+        <div class="result">
+            <h2 class="res-emoji">
+
+            </h2>
+            <h2 class="res-text">
+
+            </h2>
+            <h2 class="res-wins">
+
+            </h2>
+            <h2 class="res-turns">
+
+            </h2>
+
+        </div>
     </div>
 
-    <!--                    result -->
+    <!-- script  -->
 
-    <div class="result">
-        <h2 class="res-emoji">
-            
-        </h2>
-        <h2 class="res-text">
-            
-        </h2>
-        <h2 class="res-wins">
-            
-        </h2>
+    <script>
+        let scoreb =
+            JSON.parse(localStorage.getItem('scorerawan')) || { wins: 0, losses: 0, draws: 0 };
 
-    </div>
-</div>
+        // if (!scoreb) {
+        //     scoreb = {wins: 0, losses: 0, draws: 0};
+        // }
+        
 
-<!-- script  -->
+        document.querySelector('.res-wins').innerHTML = `Wins: ${scoreb.wins} | Losses: ${scoreb.losses} | Draws: ${scoreb.draws}`;
 
-<script>
-    let scoreb = {
-        wins: 0,
-        losses: 0,
-        draws: 0
-    }
+        let computermm = '';
+        function computerMove() {
+            const computer = Math.random() * 10;
 
-    
-
-    let computermm = '';
-    function computerMove() {
-        const computer = Math.random() * 10;
-
-        if (computer >= 0 && computer <= 3.33) {
-            computermm = 'Rock';
+            if (computer >= 0 && computer <= 3.33) {
+                computermm = 'Rock';
             }
             else if (computer > 3.33 && computer <= 6.66) {
-            computermm = 'Paper';
+                computermm = 'Paper';
             }
             else {
-            computermm = 'Scissors';
+                computermm = 'Scissors';
+            }
         }
-    }
-
-    function scorebb() {
-        if (document.querySelector('.res-text').innerHTML === 'You won') {
-            scoreb.wins += 1;
-        }
-        else if (document.querySelector('.res-text').innerHTML === 'You lost') {
-            scoreb.losses += 1;
-        }
-        else {
-            scoreb.draws += 1;
-        }
-        return scoreb;
-    }
 
 
-</script>
+
+        function scorebb() {
+            if (document.querySelector('.res-text').innerHTML === 'You won') {
+                scoreb.wins += 1;
+            }
+            else if (document.querySelector('.res-text').innerHTML === 'You lost') {
+                scoreb.losses += 1;
+            }
+            else {
+                scoreb.draws += 1;
+            }
+            localStorage.setItem('scorerawan', JSON.stringify(scoreb));
+            return scoreb;
+        }
+
+
+    </script>
 
 </body>
+
 </html>
